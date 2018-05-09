@@ -1,8 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './Main.scss';
+import defaultData from './defaultData';
+import { setData } from '../../reducers/main';
 
 class Main extends React.Component{
+  componentDidMount(){
+    this.props.setData(defaultData);
+  }
 
   render () {
     return(
@@ -13,6 +18,14 @@ class Main extends React.Component{
   }
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
 
-export default connect(mapStateToProps)(Main);
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setData: (credentials) => {
+    dispatch(setData(credentials));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
