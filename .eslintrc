@@ -30,9 +30,8 @@
       "error",
       { "functions": false, "classes": false, "variables": false }
     ],
-    "no-param-reassign": ["error", { "props": false }],
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
-    "max-len": ["error", 100],
+    "max-len": ["error", 150],
     "comma-dangle": [
       "error",
       {
