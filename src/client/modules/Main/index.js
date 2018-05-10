@@ -30,7 +30,8 @@ class Main extends React.Component{
   }
 
   render () {
-    const { data, currentData } = this.props;
+    const { data, currentIndex } = this.props,
+      currentData = data[currentIndex];
     
     if (data.length === 0) {
       return null;
@@ -38,7 +39,7 @@ class Main extends React.Component{
     
     return(
       <div className='main'>
-      
+
         <div className='main__buttons'>
           {data.map((el, index) => (
             <button key={`button${index}`} onClick={()=>{this.changeCurrentEl(index)}}>
@@ -47,66 +48,47 @@ class Main extends React.Component{
           ))}
         </div>
 
-        {currentData.map((el, index) => (
-          <div key={`slider${index}${el.percent}`}>
-            <span> {el.name} </span>
+        <div className='main__items'>
+          {currentData.map((el, index) => (
+            <div className='main__items-item' key={`slider${index}${el.percent}`}>
+              <span> {el.name} </span>
 
-            <input
-              name={index}
-              type="range"
-              min="0"
-              max="100"
-              step="0.01"
-              value={el.percent}
-              onChange={this.changePercentValue}
-            />
-            
-            <input
-              name={index}
-              type="number"
-              value={el.percent}
-              onChange={this.changePercentValue}
-              step="0.01"
-            />
-            
-          </div>
-        ))}
+              <input
+                name={index}
+                type="range"
+                min="0"
+                max="100"
+                step="0.01"
+                value={el.percent}
+                onChange={this.changePercentValue}
+              />
+              
+              <input
+                name={index}
+                type="number"
+                value={el.percent}
+                onChange={this.changePercentValue}
+                step="0.01"
+              />
+              
+            </div>
+          ))}
+        </div>
 
+        <div className='main__result'>
+          <div>Результат</div>
+          {currentData.map((el, index) => (
+            <div className='main__result-item'> <span>{el.name}:</span> <span> {el.percent} % </span> </div>
+          ))}
+        </div>
       
       </div>
     )
   }
 };
 
-// class Ch extends React.Component{
-//   constructor(props) {
-//     super(props);
-
-//     this.changePercentValue = this.changePercentValue.bind(this);
-//   }
-
-//   changePercentValue(event){
-//     debugger
-//     this.props.changePercentValue(event);
-//   }
-  
-
-//   render(){
-//     return(
-//       <input
-//         name={this.props.name}
-//         value={this.props.percent}
-//         type="number"
-//         step="any"
-//         onChange={this.changePercentValue}
-//       />
-//     )
-//   }
-// }
-
 const mapStateToProps = (state) => ({
   data: state.data,
-  currentData: state.data[state.main.currentIndex],
   currentIndex: state.main.currentIndex,
 });
 
