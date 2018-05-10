@@ -1,8 +1,6 @@
-### empty-react-redux-project
 
-Add redux, sass.
 
-Set up .eslintrc for my preference, add backend on koa, add proxy to 3000 port.
+
 
 Run dev front
 ```
