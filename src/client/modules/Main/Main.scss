@@ -1,0 +1,32 @@
+.main{
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 0px;
+    &__buttons{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__items{
+        margin: 30px 0px;
+
+        &-item{
+            display: flex;
+            margin: 20px 0px;
+            span{
+                margin: auto 0px;
+            }
+            input{
+                margin: 0px 30px;
+            }
+            input[type="number"]{
+                width: 50px;
+            }
+        }
+    }
+    &__result-item{
+        margin: 10px 0px;
+        span{
+            margin: 0px 20px 0px 0px;
+        }
+    }
+}
